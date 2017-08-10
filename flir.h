@@ -7,6 +7,17 @@
 #define BUFLEN 20
 #define CMDSTART 0x6E
 
+typedef enum
+{
+  FLIR_ERR_NOERR = 0,
+  FLIR_ERR_NOANS = 1,
+  FLIR_ERR_NOSTART = 2,
+  FLIR_ERR_TOSHORT = 3,
+  FLIR_ERR_BADCMDCRC = 4,
+  FLIR_ERR_BADDATACRC = 5,
+} FLIR_ERR_TypeDef;
+  
+
 class Flir
 {
   public:
@@ -16,6 +27,7 @@ class Flir
     void LoadBUF( byte *in_buf, size_t num_bytes);
     byte buf[BUFLEN];
     size_t cmdlen;
+    FLIR_ERR_TypeDef TestBUF();
 
   private:
     void AddByte(byte c);

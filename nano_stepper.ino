@@ -236,7 +236,7 @@ void loop() {
   if (curbtn != bufbtn && curbtn != 0){
     if (curbtn == BTN_ORIENT) { 
       ans[0]=0;
-      myFlir.MakeCMD(0x11,ans,0);
+      myFlir.MakeCMD(0x11,ans,0); //get current orientation
 
       printbuf(myFlir.buf,myFlir.cmdlen);
       sendcmd(myFlir.buf,myFlir.cmdlen); 
@@ -245,7 +245,7 @@ void loop() {
     }
     if (curbtn == BTN_CNTR_P) { 
       ans[0]=0;
-      myFlir.MakeCMD(0x14,ans,0);
+      myFlir.MakeCMD(0x14,ans,0); //get current contrast
 
       printbuf(myFlir.buf,myFlir.cmdlen);
       sendcmd(myFlir.buf,myFlir.cmdlen); 
@@ -253,9 +253,9 @@ void loop() {
       cur_fn_cmd = curbtn;
     }    
     if (curbtn == BTN_CNTR_M) { 
-      //myFlir.MakeCMD(0x15,ans,0);
+      //myFlir.MakeCMD(0x15,ans,0); //get current brightness
       ans[0]=0;
-      myFlir.MakeCMD(0x14,ans,0);
+      myFlir.MakeCMD(0x14,ans,0); //get current contrast
 
       printbuf(myFlir.buf,myFlir.cmdlen);
       sendcmd(myFlir.buf,myFlir.cmdlen); 
@@ -264,7 +264,7 @@ void loop() {
     }
     if (curbtn == BTN_RST) { 
       ans[0]=0;
-      myFlir.MakeCMD(0x3,ans,0);
+      myFlir.MakeCMD(0x3,ans,0); //reset to factory defaults
 
       printbuf(myFlir.buf,myFlir.cmdlen);
       sendcmd(myFlir.buf,myFlir.cmdlen); 
@@ -272,7 +272,7 @@ void loop() {
     
     if (curbtn == BTN_INFO) { 
       ans[0]=0;
-      myFlir.MakeCMD(0x5,ans,0);
+      myFlir.MakeCMD(0x5,ans,0); //get revision number
 
       printbuf(myFlir.buf,myFlir.cmdlen);
       sendcmd(myFlir.buf,myFlir.cmdlen);     
@@ -306,7 +306,7 @@ void loop() {
         
         ans[0]=0;
         ans[1]=val_ori;
-        myFlir.MakeCMD(0x11,ans,2);
+        myFlir.MakeCMD(0x11,ans,2); //set orientation
   
         printbuf(myFlir.buf,myFlir.cmdlen);
         sendcmd(myFlir.buf,myFlir.cmdlen); 
@@ -320,7 +320,7 @@ void loop() {
         
         ans[0]=val_ori;
         ans[1]=0;
-        myFlir.MakeCMD(0x14,ans,2);
+        myFlir.MakeCMD(0x14,ans,2); //set +1 contrast
   
         printbuf(myFlir.buf,myFlir.cmdlen);
         sendcmd(myFlir.buf,myFlir.cmdlen);
@@ -334,7 +334,7 @@ void loop() {
         
         ans[0]=val_ori;
         ans[1]=0;
-        myFlir.MakeCMD(0x14,ans,2);
+        myFlir.MakeCMD(0x14,ans,2); //set -1 contrast
   
         printbuf(myFlir.buf,myFlir.cmdlen);
         sendcmd(myFlir.buf,myFlir.cmdlen);
